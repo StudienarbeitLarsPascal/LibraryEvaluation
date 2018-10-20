@@ -31,6 +31,4 @@ for square in reachableSquaresUCI:
     squares.add(getattr(chess, square.upper()))
 
 #prints board as SVG
-SVG(chess.svg.board(board=board, squares=squares))  
-
-
+SVG(chess.svg.board(board=board, squares=squares))
