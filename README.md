@@ -19,7 +19,7 @@ For completing all of our requirements, we need to find libraries for following 
 
 Thereby we will search such libraries and evaluate them for following purposes:
 
-*Chess Core:*
+**Chess Core:**
 - Create chessboard
 - Print chess board as ASCII
 - Push moves to the chessboard 
@@ -35,18 +35,18 @@ Furthermore we will test how following actions / calculations could be realized 
 - Calculating board value & attacked figures
 - Save moves / board progression with game context as csv
 	
-*Opening strategy library:*
+**Opening strategy library:**
 - Having a list of possible opening strategies
 - Choose a random opening strategy 
 - Execute the choosen opening strategy turn by turn 
 - implement this library in Chess Core library
 
-*_(Optional)_ Chess.com API or similiar:*
+**_(Optional)_ Chess.com API or similiar:**
 - Access game engine via API
 - get moves from user / current chessboard
 - push moves to board 
 
-*_(Optional)_ GUI library:*
+**_(Optional)_ GUI library:**
 - Print chessboard onto GUI
 - Control user moves via GUI 
 - Refresh board after every turn
