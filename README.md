@@ -43,15 +43,17 @@ Furthermore we will test how following actions / calculations could be realized 
 
 **_(Optional)_ Chess.com API or similiar:**
 - Access game engine via API
-- get moves from user / current chessboard
+- Get either moves from user or current chessboard
 - push moves to board 
 
 **_(Optional)_ GUI library:**
 - Print chessboard onto GUI
-- Control user moves via GUI 
+- User gives input via GUI
 - Refresh board after every turn
 	
 Of course, a good documentation of the used libraries would also be very welcomned
+
+The current status of the driven tests can be found [here](https://drive.google.com/open?id=1szw3Wn8tYauUt8DaebZV29g4a2cooWRsh7mp3hW8iBQ)
 
 ## Organization
 
