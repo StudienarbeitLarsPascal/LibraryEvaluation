@@ -84,20 +84,21 @@ def getLegalMovesUCI():
     return list(map(board.uci, board.legal_moves))
 
 # while game is not over alternate user & ai input
-while (not board.is_game_over()):
-    if board.turn:
-        board.push(getUserMove())
-        print("Your Move: ")
-    else:
-        board.push(getRandomMove())
-        print("AIs Move:")
     
+while (not board.is_game_over()):
     print("---------------")
     print(board)
     print("---------------")
     print(getBoardValue())
     print(getAttackedPiecesValue())
     print()
+    
+    if board.turn:
+        board.push(getUserMove())
+        print("Your Move: ")
+    else:
+        board.push(getRandomMove())
+        print("AIs Move:")
 
 
 

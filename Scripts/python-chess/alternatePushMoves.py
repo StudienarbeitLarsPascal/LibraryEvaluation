@@ -28,14 +28,14 @@ def getLegalMovesUCI():
 
 # while game is not over alternate user & ai input
 while (not board.is_game_over()):
+    print("---------------")
+    print(board)
+    print("---------------")
+    print()
+	
     if board.turn:
         board.push(getUserMove())
         print("Your Move: ")
     else:
         board.push(getRandomMove())
         print("AIs Move:")
-    
-    print("---------------")
-    print(board)
-    print("---------------")
-    print()
