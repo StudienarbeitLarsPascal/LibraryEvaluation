@@ -11,24 +11,17 @@ from IPython.display import SVG
 
 board = chess.Board()
 
-#saves moves as uci
-legal_moves_uci = [];
-for move in board.legal_moves:
-    legal_moves_uci += [board.uci(move)]
+print("Please enter field:")
+field = input()
     
-#extracts moves starting from g2
-moves_from_g1 = [k for k in legal_moves_uci if k.startswith("g2")]
+# extracts moves starting from input
+movesFromSpecField = list(filter(lambda move: move.from_square is chess.SQUARE_NAMES.index(field), board.legal_moves))
+# maps targeted squares from specified field
+squareNums = list(map(lambda move: move.to_square, movesFromSpecField))
 
-#extracts reachable fields from moves string
-reachableSquaresUCI = [];
-for move in moves_from_g1:
-    reachableSquaresUCI += [move[-2:]]
-    
-#creates SquareSet from reachableSquaresUCI List
+# creates square set and adds every targeted square from specified field
 squares = chess.SquareSet()
-for square in reachableSquaresUCI:
-    #gettattr transforms square string to matching chess square constant
-    squares.add(getattr(chess, square.upper()))
+for squareNum in squareNums : squares.add(squareNum)
 
-#prints board as SVG
+# prints board as SVG
 SVG(chess.svg.board(board=board, squares=squares))
