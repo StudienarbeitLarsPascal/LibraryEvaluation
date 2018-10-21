@@ -7,6 +7,7 @@ Created on Sun Oct 21 03:07:57 2018
 
 import chess
 import chess.svg
+import random 
 
 board = chess.Board()
 
@@ -17,19 +18,23 @@ BISHOP_VALUE = 3
 QUEEN_VALUE = 9
 KING_VALUE = 20
 
-# counts how many pieces of one pieceType and color are placed on the chessboard
-def countPieces(pieceType, color):
-    return len(board.pieces(pieceType, color))
-
+# returns the value of a piece type for the given type
+def assignPieceValue(pieceType):
+    return {
+        1: PAWN_VALUE,
+        2: KNIGHT_VALUE,
+        3: BISHOP_VALUE,
+        4: ROOK_VALUE,
+        5: QUEEN_VALUE,
+        6: KING_VALUE
+    }[pieceType]
+    
 # sums value of all pieces of given color multiplied with their value
 def getValueByColor(color):
-    pawns = countPieces(chess.PAWN, color)
-    rooks = countPieces(chess.ROOK, color)
-    knights = countPieces(chess.KNIGHT, color) 
-    bishops = countPieces(chess.BISHOP, color)
-    queens = countPieces(chess.QUEEN, color)
-
-    return pawns * PAWN_VALUE + rooks * ROOK_VALUE + knights * KNIGHT_VALUE + bishops * BISHOP_VALUE + queens * QUEEN_VALUE
+    boardValue = 0
+    for pieceType in chess.PIECE_TYPES: 
+        boardValue += len(board.pieces(pieceType, color)) * assignPieceValue(pieceType)
+    return boardValue
 
 # calculates value of white pieces and subtracts value of black pieces => calculates board value
 def getBoardValue():
@@ -38,22 +43,17 @@ def getBoardValue():
     
     return whiteValue - blackValue
 
-# calculates how many pieces of given type are attacked by color
-def getAttackedPieces(pieceType, attackerColor, defenderColor):
-    attackedPieces = list(filter(lambda square : board.is_attacked_by(attackerColor, square) and not board.piece_at(square) is None and board.piece_at(square).color is defenderColor and board.piece_at(square).piece_type is pieceType, chess.SQUARES))
-    return len(attackedPieces)
-    
-# sums value of all attacked pieces by given color multiplied with their value
+# calculates how many figures are attacked by given color and assigns a value for every attacked figure
 def getAttackedPiecesValueByColor(attackerColor, defenderColor):
-    attackedPawns = getAttackedPieces(chess.PAWN, attackerColor, defenderColor)
-    attackedRooks = getAttackedPieces(chess.ROOK, attackerColor, defenderColor)
-    attackedKnights = getAttackedPieces(chess.KNIGHT, attackerColor, defenderColor)
-    attackedBishops = getAttackedPieces(chess.BISHOP, attackerColor, defenderColor)
-    attackedQueens = getAttackedPieces(chess.QUEEN, attackerColor, defenderColor)
-    attackedKings = getAttackedPieces(chess.KING, attackerColor, defenderColor)
-    
-    return attackedPawns * PAWN_VALUE + attackedRooks * ROOK_VALUE + attackedKnights * KNIGHT_VALUE + attackedBishops * BISHOP_VALUE + attackedQueens * QUEEN_VALUE + attackedKings * KING_VALUE
-    
+    # filters squares for attacked squares, on which a figure of defender is placed
+    attackedSquares = filter(lambda square : board.is_attacked_by(attackerColor, square) and not board.piece_at(square) is None and board.piece_at(square).color is defenderColor, chess.SQUARES)
+    # maps piece type to attacked figure
+    attackedPieces = map(lambda square : board.piece_at(square).piece_type, attackedSquares)
+    # maps piece value to attacked pieces
+    value = map(assignPieceValue, attackedPieces)
+    # sums piece value of all attacked pieces
+    return sum(value)
+     
 # calculates value of attacked black pieces and subtracts value of attacked white pieces => calculates attacked pieces value
 def getAttackedPiecesValue():
     whiteValue = getAttackedPiecesValueByColor(chess.WHITE, chess.BLACK)
@@ -61,8 +61,10 @@ def getAttackedPiecesValue():
     
     return whiteValue - blackValue
 
-    
-# GAME SECTION
+
+###########################################  
+############## GAME SECTION ###############
+###########################################  
    
 # print user possible moves and read in chosen move
 def getUserMove():
