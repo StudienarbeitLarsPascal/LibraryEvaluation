@@ -31,10 +31,8 @@ def assignPieceValue(pieceType):
     
 # sums value of all pieces of given color multiplied with their value
 def getValueByColor(color):
-    boardValue = 0
-    for pieceType in chess.PIECE_TYPES: 
-        boardValue += len(board.pieces(pieceType, color)) * assignPieceValue(pieceType)
-    return boardValue
+    attackedPiecesValue = map(lambda pieceType : len(board.pieces(pieceType, color)) * assignPieceValue(pieceType), chess.PIECE_TYPES)
+    return sum(attackedPiecesValue)
 
 # calculates value of white pieces and subtracts value of black pieces => calculates board value
 def getBoardValue():
