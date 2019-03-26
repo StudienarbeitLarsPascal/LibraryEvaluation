@@ -1,0 +1,1140 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{python-chess\_evaluation}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{core}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{HTML}\PY{p}{,} \PY{n}{display}
+        \PY{n}{HTML}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+s2}{\PYZlt{}style\PYZgt{}}
+        \PY{l+s+s2}{svg }\PY{l+s+s2}{\PYZob{}}
+        \PY{l+s+s2}{    width:40}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{ !important;}
+        \PY{l+s+s2}{    height:40}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{ !important;}
+        \PY{l+s+s2}{\PYZcb{}}
+        
+        \PY{l+s+s2}{.container }\PY{l+s+s2}{\PYZob{}}\PY{l+s+s2}{ }
+        \PY{l+s+s2}{    width:100}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{ !important;}
+        \PY{l+s+s2}{\PYZcb{}}
+        \PY{l+s+s2}{\PYZlt{}/style\PYZgt{}}
+        \PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} \PYZpc{}autosave 0}
+        \PY{o}{\PYZpc{}}\PY{k}{config} IPCompleter.greedy=True
+\end{Verbatim}
+
+
+    \section{Python-Chess Evaluierung}\label{python-chess-evaluierung}
+
+In diesem Notebook wird die "python-chess-library", oder auch "chess
+core" genannt, Bibliothek evaluiert. Der "chess core" soll Funktionen
+zum Erstellen des Schachbretts, berechnen der erlaubten/möglichen Züge,
+durchführen der Züge etc. bereitstellen.
+
+Dabei wird jede notwendige Funktion getestet und dessen Realisierung
+dokumentiert. Alle notwendigen Funktionen sind folgend gelistet.
+
+\begin{itemize}
+\tightlist
+\item
+  Schachbrett erstellen
+\item
+  Schachbrett als ASCII ausgeben
+\item
+  Züge auf dem Schachbrett ziehen
+\item
+  Erlaubte Züge berechnen
+\item
+  Auf Schach/Schachmatt prüfen
+\item
+  Testen, ob Rochade, En Passant als erlaubte Züge gelistet werden
+\item
+  \emph{(Optional)} Schachbrett als SVG in JupyterNotebook ausgeben
+\item
+  \emph{(Optional)} Möglichkeiten evaluieren, Schachbrett je nach
+  Positionierungen eindeutig identifizierbar in CSV zu schreiben
+\end{itemize}
+
+Des Weiteren werden folgende Aktionen/Berechnungen auf deren
+Umsetzbarkeit getestet. Dabei wird herausgefunden werden was nötig ist,
+um die aufgelisteten Aktionen mit der Bibliothek durchzuführen.
+
+\begin{itemize}
+\tightlist
+\item
+  Berechnen \& Ausgeben erlaubter Züge für eine spezielle Figur
+\item
+  Abwechselnder User \& KI Input auf demselben Board
+\item
+  Berechnen des Wertes des Schachbretts und der attackierten Figuren
+\item
+  Speichern von Zügen/Entwicklung eines Schachbretts inklusive
+  Sieg/Niederlagen als CSV-Datei
+\end{itemize}
+
+\subsection{Vorraussetzungen}\label{vorraussetzungen}
+
+Folgend werden die allgemeinen Vorraussetzungen für die Verwendung und
+Installation der "python-chess-library" erläutert.
+
+\begin{itemize}
+\tightlist
+\item
+  Python 3 Da die zu verwendende Bibliothek auf Python 3 basiert muss
+  diese Version auf dem auszuführenden Computer vorhanden sein.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://wsvincent.com/install-python3-mac/}{macOS}
+  \item
+    \href{https://docs.python-guide.org/starting/install3/linux/}{Linux}
+  \item
+    \href{https://realpython.com/installing-python/}{Win}
+  \end{itemize}
+\item
+  Jupyter Notebooks Damit die aufgeführten Scripts direkt im Browser
+  ausgeführt werden können haben sich die Autoren dieser Arbeit darauf
+  verständigt Jupyter Notebook zu nutzen. Dabei bietet diese Applikation
+  den Vorteil, dass Code und Dokumente live geteilt werden können und
+  der entwickelte Code sofort ausgeführt werden kann. Ebenfalls bietet
+  Jupyter Notebook die Möglichkeit unter Anderem Daten zu visualisieren.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://jupyter.org/install}{Installationsanleitung}
+  \end{itemize}
+\item
+  "python-chess-library"
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{pip\ install\ python-chess} Im weiteren Verlauf dieses
+    Notebooks werden zusätzliche Module, wie beispielsweise Pandas,
+    genutzt, die ebenfalls auf dem auszuführenden Rechner installiert
+    sein müssen.
+  \end{itemize}
+\end{itemize}
+
+    \subsection{Erstellen eines Schachbretts und ausgeben als
+ASCII}\label{erstellen-eines-schachbretts-und-ausgeben-als-ascii}
+
+Zu Beginn muss die Python-Chess-Library eingebunden werden, die für den
+weiteren Verlauf der Evaluierung und Implementierung benötigt wird.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{import} \PY{n+nn}{chess}
+\end{Verbatim}
+
+
+    Das unten einzusehende Code Snippet zeigt, wie ein neues Schachbrett mit
+standardmäßigen Positionierungen der Figuren erstellt werden kann. Dies
+ist umzusetzen durch den Aufruf der \texttt{chess.Board()} Funktion und
+das Speicherns der Rückgabe dieser Funktion in einer \texttt{board}
+Variable. Dieses \texttt{board} beinhaltet die Positionierungen aller
+Figuren und kann mittels der python-eigenen \texttt{print()} Funktion
+als ASCII Code ausgegeben werden, wie unten einzusehen ist. Zuletzt wird
+noch die Möglichkeit aufgezeigt, die auf einem spezifizierten Feld
+befindliche Figur auszulesen. Dieses Feld wird dabei über das Datenfeld
+\texttt{chess.B1} aufgerufen.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
+            
+        \PY{n+nb}{print} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Board:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n+nb}{print} \PY{p}{(}\PY{n}{board}\PY{p}{)}
+        
+        \PY{n+nb}{print} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Piece at B1:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n+nb}{print} \PY{p}{(}\PY{n}{board}\PY{o}{.}\PY{n}{piece\PYZus{}at}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{B1}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+Board:
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+P P P P P P P P
+R N B Q K B N R
+
+Piece at B1:
+N
+
+    \end{Verbatim}
+
+    Dabei ist einzusehen, dass die Figuren durch einen Buchstaben abgekürzt
+werden. Figuren des ersten Spielers werden als Kleinbuchstaben
+dargestellt, Figuren des zweiten Spielers als äquivalente
+Großbuchstaben. Leere Felder werden mit einem Punkt dargestellt. Aus
+folgender Liste kann die Zurodnung der Buchstaben zu den Schachfiguren
+entnommen werden:
+
+\begin{itemize}
+\tightlist
+\item
+  p/P: Pawn / Bauer
+\item
+  r/R: Rook / Turm
+\item
+  n/N: Knight / Springer
+\item
+  b/B: Bishop / Läufer
+\item
+  q/Q: Queen / Dame
+\item
+  k/K: King / König
+\end{itemize}
+
+    Die Zuordnung der Felder findet mittels einer Kombination aus einem
+Buchstaben und einer Zahl statt. Die Buchstaben A-H geben dabei die
+horizontale Reihe an, die Zahlen 1-8 die vertikalen Reihen. Jedem Feld
+wird eine namensäquivalente Variable in der statischen Klasse "chess"
+zugeordnet, wie beispielhaft in Zeile 16 im oberen Code Snippet erkannt
+werden kann.
+
+    \subsection{Alternierende Eingaben von Nutzer \&
+KI}\label{alternierende-eingaben-von-nutzer-ki}
+
+Damit ein Schachspiel zustande kommen kann, ist es zwingend
+erforderlich, dass Nutzer und KI abwechselnd Züge auswählen und zum
+Board "pushen" können. Dafür muss zunächst überprüft werden, welcher
+Spieler an der Reihe ist und dieser muss einen Zug auswählen können, der
+daraufhin von dem Schachbrett übernommen wird. Auf diesem Schachbrett
+kann dann der nächste Spieler seinen Zug auswählen.
+
+Bei der \emph{"python-chess"} Bibliothek kann der zu agierende Spieler
+über die \texttt{board.turn} Variable ermittelt werden. Diese steht auf
+\texttt{True} wenn Spieler 1 an der Reihe ist und auf \texttt{False},
+wenn Spieler 2 den nächsten Zug machen muss. Beim Ausführen einer
+\texttt{push} Operation auf dem \texttt{board}, wechselt die Variable
+automatisch ihren Wert.
+
+Damit das Spiel erkennt, wann dieses vorbei ist, bietet die Bibliothek
+die \texttt{board.is\_game\_over()} Funktion. Diese gibt den Wert
+\texttt{True} zurück, falls das Spiel auf Grund eines Schachmatts oder
+anderer spielbeendender Umstände vorbei ist.
+
+Um alle möglichen Züge ausgeben zu können, bietet die verwendete
+Bibliothek die Funktion \texttt{board.legal\_moves}. Diese gibt alle
+gültigen Züge nach \emph{chess960} Standard aus. Dabei werden nur die
+Züge ausgegeben, die zum einen vom aktuellen Schachbrett aus
+durchführbar sind und zum anderen nicht zu einer unmittelbaren
+Niederlage führen. Das bedeutet, dass bei den legalen Zügen keine Züge
+ausgegeben werden, bei der sich der Spieler beispielsweise selbst ins
+"Schach" stellt oder ein durch den Gegner verursachtes "Schach"
+ignoriert. Mittels der \texttt{board.uci()} Funktion können diese in
+die, aus 4 Zeichen bestehende, leserlichere Form gebracht werden. Die
+ersten beiden Zeichen stellen dabei das startende Feld dar, während die
+zweiten zwei Zeichen das Feld darstellen, auf das sich die Figur vom
+Startfeld bewegt.
+
+Diese Funktion kann beim Zug des Nutzers verwendet werden, um diesem
+eine einfachere Übersicht über seine Möglichkeiten zu geben und den Zug
+in einer ihm verständlichen Form einzulesen.
+
+Mittels der \texttt{list()"} Funktion können die legalen Züge zu einer
+Liste zusammengefasst werden.
+
+Im folgenden Beispiel sind alle notwendigen Schritte für ein Schachspiel
+zwischen Nutzer und KI erkennbar. Die KI ermittelt dabei ihren Zug durch
+eine zufällige Auswahl aus der Liste aller legalen Züge. Dabei wurden
+die einzelnen Methoden, wie oben beschrieben, implementiert und genutzt.
+
+Zusätzlich müssen einigen Funktionen der Python-Chess-Library importiert
+werden, die für die Visualisierung eines Schachbretts als SVG benötigt
+werden. Ebenfalls wird das Modul \texttt{random} eingebunden, da es für
+die Berechnung zufälliger Züge benötigt wird.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k+kn}{import} \PY{n+nn}{chess}\PY{n+nn}{.}\PY{n+nn}{svg}
+        \PY{k+kn}{import} \PY{n+nn}{random}
+        \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \texttt{get\_random\_move} wählt zufällig einen Zug aus den erlaubten
+Zügen aus und gibt diese als \texttt{CHESS.Move} zurück. Hingegen wird
+die Funktion \texttt{get\_legal\_moves\_uci} genutzt um die erlaubten
+Züge berechnen zu lassen.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}random\PYZus{}move}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n}{random}\PY{o}{.}\PY{n}{choice}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}\PY{p}{)}
+        
+        \PY{k}{def} \PY{n+nf}{get\PYZus{}legal\PYZus{}moves\PYZus{}uci}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{n}{board}\PY{o}{.}\PY{n}{uci}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    Die Funktion \texttt{get\_user\_move} wird verwendet um den Nutzer die
+möglichen, bzw. erlaubten, Züge auszugeben. Dabei wird die zuvor
+eingeführte Funktion zur Berechnung von legalen Zügen verwendet.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}user\PYZus{}move}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Possible Moves: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{get\PYZus{}legal\PYZus{}moves\PYZus{}uci}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+            
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Enter your move:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{move} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{p}{)}
+                
+            \PY{k}{return} \PY{n}{chess}\PY{o}{.}\PY{n}{Move}\PY{o}{.}\PY{n}{from\PYZus{}uci}\PY{p}{(}\PY{n}{move}\PY{p}{)}
+\end{Verbatim}
+
+
+    Der folgende Codeausschnitt wird genutzt um einen Nutzer gegen den
+Computer spielen zu lassen, der jeweils einen zufälligen Zug verwendet.
+Hierbei wird für das Jupyter Notebook ein Counter eingeführt, damit das
+Spiel bereits nach zwei Zügen pro Spieler beendet ist. Alternativ dazu
+wird das Spiel beendet, sobald ein Sieger oder ein Patt feststeht.
+
+Ebenfalls wird als Unterstützung für den Spieler pro Zug das Schachbrett
+und die legalen Züge ausgegeben.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}
+        \PY{k}{while} \PY{p}{(}\PY{o+ow}{not} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}game\PYZus{}over}\PY{p}{(}\PY{p}{)} \PY{o+ow}{and} \PY{n}{counter} \PY{o}{\PYZlt{}} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{n}{board}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
+            
+            \PY{k}{if} \PY{n}{board}\PY{o}{.}\PY{n}{turn}\PY{p}{:}
+                \PY{n}{board}\PY{o}{.}\PY{n}{push}\PY{p}{(}\PY{n}{get\PYZus{}user\PYZus{}move}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Your Move: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n}{board}\PY{o}{.}\PY{n}{push}\PY{p}{(}\PY{n}{get\PYZus{}random\PYZus{}move}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{AIs Move:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                
+            \PY{n}{counter}\PY{o}{+}\PY{o}{=}\PY{l+m+mi}{1}
+            
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{board}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{[...]}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+---------------
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+P P P P P P P P
+R N B Q K B N R
+---------------
+
+Possible Moves: 
+['g1h3', 'g1f3', 'b1c3', 'b1a3', 'h2h3', 'g2g3', 'f2f3', 'e2e3', 'd2d3', 'c2c3', 'b2b3', 'a2a3', 'h2h4', 'g2g4', 'f2f4', 'e2e4', 'd2d4', 'c2c4', 'b2b4', 'a2a4']
+Enter your move:
+c2c3
+Your Move: 
+---------------
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . P . . . . .
+P P . P P P P P
+R N B Q K B N R
+---------------
+
+AIs Move:
+---------------
+r . b q k b n r
+p p p p p p p p
+. . n . . . . .
+. . . . . . . .
+. . . . . . . .
+. . P . . . . .
+P P . P P P P P
+R N B Q K B N R
+---------------
+
+Possible Moves: 
+['g1h3', 'g1f3', 'd1a4', 'd1b3', 'd1c2', 'b1a3', 'c3c4', 'h2h3', 'g2g3', 'f2f3', 'e2e3', 'd2d3', 'b2b3', 'a2a3', 'h2h4', 'g2g4', 'f2f4', 'e2e4', 'd2d4', 'b2b4', 'a2a4']
+Enter your move:
+d1a4
+Your Move: 
+---------------
+r . b q k b n r
+p p p p p p p p
+. . n . . . . .
+. . . . . . . .
+Q . . . . . . .
+. . P . . . . .
+P P . P P P P P
+R N B . K B N R
+---------------
+
+AIs Move:
+r . b q k b n r
+. p p p p p p p
+p . n . . . . .
+. . . . . . . .
+Q . . . . . . .
+. . P . . . . .
+P P . P P P P P
+R N B . K B N R
+[{\ldots}]
+
+    \end{Verbatim}
+
+    \subsection{Ausgeben des Boards als
+SVG}\label{ausgeben-des-boards-als-svg}
+
+Um eine bessere Darstellung und Erklärung der Implementation in der
+theoretischen Ausarbeitung zu ermöglichen, wäre eine visuelle
+Darstellung des Schachbretts wünschenswert. Die "python-chess-library"
+ermöglicht dies durch ein Konvertieren des Boards zu einer SVG-Datei.
+Diese kann dann mittels der python-eigenen \texttt{SVG()} Funktion im
+Python-Notebook angezeigt werden.
+
+Um dies zu ermöglichen, muss zunächst die SVG library aus
+\emph{"IPython"} importiert werden. Anschließend kann das Board über die
+\texttt{chess.svg.board()} Funktion konvertiert und anschließend als SVG
+ausgegeben werden.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{SVG}
+        
+        \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
+        \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{)}\PY{p}{)} 
+\end{Verbatim}
+
+\texttt{\color{outcolor}Out[{\color{outcolor}9}]:}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_18_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    Die verwendete Bibliothek bringt den Vorteil mit sich, dass einige
+wichtige Eigenschaften während eines Spiels visualisiert werden können.
+Ein Beispiel für diese Visualisierung ist das Schachmatt, bei dem der
+betroffende König rot hervorgehoben wird. Ein weiteres Beispiel zum
+Thema Visualisierung wird im folgenden Kapitel gegeben.
+
+Um diesen Fall simulieren zu können, wird in diesem Beispiel eine
+bestimmte Situation während eines Schachspiels importiert, in der ein
+Schachmatt vorliegt. Das Schachmatt auf der Position \texttt{E8} wird in
+diesem Codeausschnitt manuell, durch den Übergabeparamter
+\texttt{chess.E8}, hervorgehoben.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{1R2k3/R7/8/8/8/8/8/4K3 b KQkq \PYZhy{} 0 1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{p}{,} \PY{n}{check}\PY{o}{=}\PY{n}{chess}\PY{o}{.}\PY{n}{E8}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+\texttt{\color{outcolor}Out[{\color{outcolor}10}]:}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_20_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \subsection{Berechnen \& Ausgeben legaler Züge eines speziellen
+Felds}\label{berechnen-ausgeben-legaler-zuxfcge-eines-speziellen-felds}
+
+Für eine bessere, visuelle Darstellung in der theoretischen Ausarbeitung
+wurde die Möglichkeit geprüft spezielle Felder auf dem ausgegebenen SVG
+markieren zu können. Solche Felder können beispielsweise die errechneten
+erlaubten Züge einer speziellen Figur / eines speziellen Felds
+darstellen, um anzuzeigen, welche Möglichkeiten eine Figur in der
+aktuellen Situation besitzt.
+
+Dies kann realisiert werden, indem auf die legalen Züge zurückgegriffen
+wird und diese gefiltert werden. Bei dem verwendeten Filter müssen die
+Ausgangspositionen, die mit \texttt{move.from\_square} ausgelesen werden
+können, mit dem eingegebenen Feld übereinstimmen.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
+         
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Please enter field:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{field} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{p}{)}
+         
+         \PY{n}{moves\PYZus{}from\PYZus{}spec\PYZus{}field} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{move}\PY{p}{:} \PY{n}{move}\PY{o}{.}\PY{n}{from\PYZus{}square} \PY{o+ow}{is} \PY{n}{chess}\PY{o}{.}\PY{n}{SQUARE\PYZus{}NAMES}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{field}\PY{p}{)}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Please enter field:
+a2
+
+    \end{Verbatim}
+
+    Diese herausgefilterten Züge werden dann zu deren Zielfelder zugeordnet.
+Diese können mit der Funktion \texttt{move.to\_square} ausgelsen werden.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{square\PYZus{}nums} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{move}\PY{p}{:} \PY{n}{move}\PY{o}{.}\PY{n}{to\PYZus{}square}\PY{p}{,} \PY{n}{moves\PYZus{}from\PYZus{}spec\PYZus{}field}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    Nun kann ein SquareSet erstellt und alle gefilterten Felder diesem
+hinzugefügt werden. Das SquareSet kann dann beim Erstellen des Board
+angegeben werden. Dies veranlasst das Zeichnen von Kreuzen auf den
+berechneten Feldern, die von dem angegebenen Feld aus erreicht werden
+können.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{squares} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{SquareSet}\PY{p}{(}\PY{p}{)}
+         \PY{k}{for} \PY{n}{square\PYZus{}num} \PY{o+ow}{in} \PY{n}{square\PYZus{}nums} \PY{p}{:} \PY{n}{squares}\PY{o}{.}\PY{n}{add}\PY{p}{(}\PY{n}{square\PYZus{}num}\PY{p}{)}
+         
+         \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{,} \PY{n}{squares}\PY{o}{=}\PY{n}{squares}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+\texttt{\color{outcolor}Out[{\color{outcolor}13}]:}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_26_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \subsection{Speicherung der einzelnen Spielzüge in
+history.csv}\label{speicherung-der-einzelnen-spielzuxfcge-in-history.csv}
+
+Um die KI Entscheidungen um ihre Spielzüge auch von vorherigen Spielen
+und desse Ausgängen abhängig zu machen, muss eine Historie angelegt
+werden, die die Spielbretter und den Ausgang des Spiels im Nachgang
+beinhaltet. Anhand dieser Historie kann die KI in zukünfigen Spielen
+dann den Wert des Spielbrettes abschätzen und das Spielbrett evaluieren,
+das die höchste Chance auf einen Sieg bietet.
+
+Zur Erweiterung der Liste wird zuerst das Modul Pandas genutzt, das es
+ermöglicht Informationen als Datenbank in einer Variable zu speichern.
+Ebenso wird angegeben unter welchem Pfad sich die Zughistorie befinden
+soll.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+         \PY{n}{HISTORY\PYZus{}FILE\PYZus{}LOC} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{res/history.csv}\PY{l+s+s2}{\PYZdq{}}
+\end{Verbatim}
+
+
+    Dazu kann testweise ein Spiel durchgespielt werden, wobei jeder Zug
+zufällig aus der Liste der legalen Züge gewählt wird.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}random\PYZus{}move}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{n}{random}\PY{o}{.}\PY{n}{choice}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    Nach jedem Zug wird das Spielbrett in der "FEN" Darstellung einer Liste
+hinzugefügt. Die "FEN" Darstellung ist eine gekürzte Form der
+Darstellung des Spielbretts, wobei das Spielbrett dennoch eindeutig
+identifizierbar bleibt. Dabei wird neben dem aktuellen Spielbrett auch
+die Farbe der nächste zu spielenden Figur, die Anzahl der Züge beider
+Seiten und weitere Informationen angegeben. Um diese aus der Darstellung
+zu kürzen, wird die auf die "FEN" Darstellung des Boards die
+\texttt{split} Funktion angewandt und nur das erste Element aus der
+daraus entstehenden Liste gespeichert, da die einzelnen Merkmale in
+dieser Darstellung per Leerzeichen getrennt werden.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{k}{def} \PY{n+nf}{play\PYZus{}random\PYZus{}chess\PYZus{}game}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
+             \PY{n}{turn\PYZus{}list} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{p}{)}
+             \PY{k}{while} \PY{o+ow}{not} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}game\PYZus{}over}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{turn\PYZus{}list}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{board}\PY{o}{.}\PY{n}{fen}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+                 \PY{n}{board}\PY{o}{.}\PY{n}{push}\PY{p}{(}\PY{n}{get\PYZus{}random\PYZus{}move}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{)}
+             \PY{k}{return} \PY{n}{turn\PYZus{}list}
+\end{Verbatim}
+
+
+    Nach Ende des Spiels wird über der zu spielenden Farbe ermittelt, wer
+der Sieger des Spiels ist und dementsprechend der Wert "+1" oder "-1"
+zurückgegeben. Mit diesem wird dann eine Key-Value Liste erstellt, die
+zu jedem Spielbrett des vergangenen Spiels den Wert zuweist, der Aussage
+über den Sieger gibt.
+
+Diese Liste wird dann zusammen gefügt mit der bisher vorhandenen
+Historie. Falls bereits ein Eintrag für ein gleichartiges Schachbrett
+existiert, wird der Siegwert zu dem aktuellen Wert aus der Historie dazu
+addiert, andernfalls wird ein neuer Eintrag mit dem Siegwert angelegt.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{k}{def} \PY{n+nf}{store\PYZus{}game}\PY{p}{(}\PY{n}{turn\PYZus{}list}\PY{p}{,} \PY{n}{victory\PYZus{}status}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{new\PYZus{}turn\PYZus{}dict} \PY{o}{=} \PY{n+nb}{dict}\PY{o}{.}\PY{n}{fromkeys}\PY{p}{(}\PY{n}{turn\PYZus{}list}\PY{p}{,} \PY{n}{victory\PYZus{}status}\PY{p}{)}
+                 \PY{c+c1}{\PYZsh{} get existing board history}
+                 \PY{n}{history} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{HISTORY\PYZus{}FILE\PYZus{}LOC}\PY{p}{)}
+                 \PY{n}{history\PYZus{}dict} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{history}\PY{o}{.}\PY{n}{board}\PY{p}{)}\PY{p}{,} \PY{n+nb}{list}\PY{p}{(}\PY{n}{history}\PY{o}{.}\PY{n}{value}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+                 \PY{c+c1}{\PYZsh{} merge existing history with new boards and sum the victory states}
+                 \PY{n}{merged\PYZus{}history\PYZus{}dict} \PY{o}{=} \PY{p}{\PYZob{}} \PY{n}{k}\PY{p}{:} \PY{n}{new\PYZus{}turn\PYZus{}dict}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{k}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)} \PY{o}{+} \PY{n}{history\PYZus{}dict}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{k}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)} \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{set}\PY{p}{(}\PY{n}{new\PYZus{}turn\PYZus{}dict}\PY{p}{)} \PY{o}{|} \PY{n+nb}{set}\PY{p}{(}\PY{n}{history\PYZus{}dict}\PY{p}{)} \PY{p}{\PYZcb{}}
+                 \PY{n}{merged\PYZus{}history} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{merged\PYZus{}history\PYZus{}dict}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{board}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{value}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+                 \PY{c+c1}{\PYZsh{} overwrite history csv with new, merged history}
+                 \PY{n}{merged\PYZus{}history}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{n}{HISTORY\PYZus{}FILE\PYZus{}LOC}\PY{p}{)}
+\end{Verbatim}
+
+
+    Der Siegwert nach dem Schachbrett gibt dann, je nach Höhe, Auskunft
+darüber, wie wahrscheinlich es ist mit einem solchen Schachbrett zu
+gewinnen. Umso höher der Wert in den positiven Bereich fällt, desto
+wahrscheinlicher ist ein Sieg für Spieler 1. Umso höher der Wert in den
+negative Bereich fällt, desto besser sind die Aussichten für Spieler 2.
+
+Diese Erkenntnis kann dann von der KI genutzt werde, um beim "iterative
+Deepening" Prozess alle möglichen Schachbretter zu evaluieren und sich
+so für den besten Zug zu entscheiden.
+
+Der folgende Code koordiniert die Abläufe der Funktionen um die Datei
+\texttt{history.csv} zu erweitern.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{:}
+            \PY{n}{i} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+            \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
+            \PY{n}{turn\PYZus{}list} \PY{o}{=} \PY{n}{play\PYZus{}random\PYZus{}chess\PYZus{}game}\PY{p}{(}\PY{n}{board}\PY{p}{)}
+        
+            \PY{n}{victory\PYZus{}status} \PY{o}{=} \PY{l+m+mi}{1} \PY{k}{if} \PY{n}{board}\PY{o}{.}\PY{n}{turn} \PY{k}{else} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}
+            \PY{n}{store\PYZus{}game}\PY{p}{(}\PY{n}{turn\PYZus{}list}\PY{p}{,} \PY{n}{victory\PYZus{}status}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Games finished}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    Ein Ausschnitt aus der history.csv ist im folgenden Snippet zu sehen.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{HISTORY\PYZus{}FILE\PYZus{}LOC}\PY{p}{)}
+        \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    Damit eingeschätzt werden kann, wie aussichtsreich ein bestimmter
+Boardzustand ist, kann ein gespeicherter Spielverlauf zur Hilfe genommen
+werden. Mit Hilfe der Funktion \texttt{compare\_board\_history} kann ein
+Erwartungswert berechnet werden. Umso höher der zurückgegebene Wert der
+Funktion, desto wahrscheinlicher ist ein Sieg für Weiß. Hingegen ist ein
+Sieg für Schwarz umso wahrscheinlicher, sobald der Wert deutlicher in
+den negative Bereich fällt.
+
+Der Vorgang zur Berechnung dieses Wertes beginnt mit dem Einlesen der
+\texttt{history.csv} in ein Pandas Dataframe. Daraufhin wird durch die
+Reihe des Dataframes iteriert, die die Schachbretter in FEN-Schreibweise
+enthält. Sobald die aktuelle Spielsituation in der Historie gefunden
+wurde, wird deren Wert ausgelesen und zurückgegeben. Falls die aktuelle
+Spielsituation nicht vorhanden ist, wird der Wert \texttt{0}
+zurückgegeben.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{compare\PYZus{}board\PYZus{}history}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
+                \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{HISTORY\PYZus{}FILE\PYZus{}LOC}\PY{p}{)}
+                \PY{n}{row} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{board}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{board}\PY{o}{.}\PY{n}{fen}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}
+                \PY{n}{value} \PY{o}{=} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{value}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{item}\PY{p}{(}\PY{p}{)} \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{value}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{1} \PY{k}{else} \PY{l+m+mi}{0}
+                \PY{k}{return} \PY{n}{value}
+\end{Verbatim}
+
+
+    \subsection{Überprüfung auf ein Schach oder
+Spielende}\label{uxfcberpruxfcfung-auf-ein-schach-oder-spielende}
+
+Damit der Spielverlauf korrekt nach den Regeln des Spiels verlaufen
+kann, muss während jedes Zuges darauf geprüft werden, ob ein Schach,
+Schachmatt oder Patt vorliegt. Schach ist hierbei eine Stellung während
+des Spiels, bei dem der König in Bedrängnis geraten ist. Ein Schach kann
+im weiteren Verlauf zu einem Schachmatt führen. Hierbei liegt der
+Unterschied darin, dass der Spieler, der sich im Schachmatt befindet mit
+keinem regelkonformen Zug sich aus dem Schachmatt befreien kann und
+somit das Spiel verloren hat. Steht der König Schach kann er mit einem
+gezielten Zug sich aus dieser Lage befreien. Ein Patt ist eine
+Endposition beim Schach, die die Eigenschaft hat, dass keiner der beiden
+Spieler ein Schachmatt erreichen kann.
+
+Da ein Schachmatt oder Patt das Schachspiel beendet ist diese Prüfung
+ein essenzieller Aspekt der zu entwickelnden KI. Um diese Prüfung
+durchzuführen bietet die verwendete Bibliothek bereits einige
+Funktionen. Ebenso ist es wichtig zu überprüfen, ob ein Schach vorliegt,
+da der Spieler zuerst dies lösen muss, bevor er weiterspielen kann. Um
+diese Prüfung durchzuführen steht jeweils für die Überprüfung eines
+Schachs oder Spielendes eine Funktion zur Verfügung, die das aktuelle
+Spiel auf diesen Aspekt überprüft. Um herauszufinden, ob es sich um ein
+Schach handelt, kann die folgende Funktion verwendet werden. *
+\texttt{is\_check()} * Überprüft die aktuellen Begebenheiten auf ein
+mögliches Schach
+
+Hingegen gibt es die Funktion \texttt{is\_game\_over}, die die
+gespielten Züge auf jegliche Arten einer benötigten Beendigung des
+Spiels überprüft. Hierbei beinhaltet \texttt{is\_game\_over} einige
+mögliche Überprüfungen auf Schachmatt oder Patt. *
+\texttt{is\_game\_over()} * Stellt sicher, ob das Spiel auf Grund eines
+Schachmatts oder anderer spielbeendender Umstände vorbei ist * Hierbei
+wird überprüft, ob ein Schachmatt (\texttt{is\_checkmate()}), ein Patt
+(\texttt{is\_stalemate()}), eine Tote Stellung
+(\texttt{is\_insufficient\_material()}), die 75-Züge-Regel
+(\texttt{is\_seventyfive\_moves()}), eine Figur fünfmal auf der gleichen
+Position sich befindet (\texttt{fivefold\_repetition}), oder eine
+spezielle Endbedingung vorliegt.
+
+Um herauszufinden, ob ein Spieler tatsächlich gewonnen hat kann eine
+Teilfunktion der zuvor genannten genutzt werden. Diese Funktion
+überprüft lediglich, ob ein Schachmatt vorliegt. *
+\texttt{is\_checkmate()} * Stellt fest, ob es sich nach den bereits
+gespielten Zügen ein Schachmatt vorliegt
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} import situation where checkmate is True}
+        \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r1bqkb1r/pppp1Qpp/2n2n2/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq \PYZhy{} 0 4}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Check: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}check}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Checkmate: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}checkmate}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Game is over: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}game\PYZus{}over}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    Im folgenden wird ein Beispiel einer Spielsituation gezeigt, in der ein
+Schachmatt vorliegt und die auf Schach, Schachmatt und Spielende
+überprüft wurde.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \subsection{Überprüfung, ob "en passant" und "Rochaden" unterstützt
+werden}\label{uxfcberpruxfcfung-ob-en-passant-und-rochaden-unterstuxfctzt-werden}
+
+Im Schach gibt es einige spezielle Züge, die es ermöglichen eine Figur
+eine Aktion durchzuführen zu lassen, die normalerweise laut der
+grundlegenden Definition dieser nicht möglich ist.
+
+Die Schachfigur eines Bauers darf normalerweise nur dann eine andere
+Figur schlagen, wenn sich diese direkt in dem diagonal vor dem Bauern
+angrenzenden Feld befindet. Durch die sogenannte Regel "en passant", im
+deutschen "im Vorbeigehen", wird diese Regel erweitert. Eingesetzt
+werden kann "en passant", wenn auf einen Bauern die Sonderregel des
+Doppelschritts aus der Grundstellung angewendet wird. Steht in diesem
+Fall der mit Doppelschritt herausgerückte Bauern neben einem des
+Gegners, dann kann dieser den neu herausgerückten Bauern durch "en
+passant" schlagen. Hierbei springt der angreifende Bauer des Gegners
+direkt hinter den herausgerückten und schlägt ihn somit.
+
+Damit die Schach-KI alle möglichen Züge des Gegners bedenken und ebenso
+alle Züge ausführen soll, muss überprüft werden, ob die verwendete
+Library die beiden Sonderzüge unterstützt, oder ob diese Unterstützung
+manuell entwickelt werden muss.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} import situation where en passant is possible}
+        \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rnbqkbnr/1pp1pppp/p7/3pP3/8/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 3}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} the function board.has\PYZus{}legal\PYZus{}en\PYZus{}passant() could check if a en passant is possible, but does not return at which square}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Library is supporting en passant: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{chess}\PY{o}{.}\PY{n}{Move}\PY{o}{.}\PY{n}{from\PYZus{}uci}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{e5d6}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{o+ow}{in} \PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}
+\end{Verbatim}
+
+
+    Die Chess-Core Bibliothek unterstützt somit den Sonderzug en passent.
+
+Im Folgenden wird ein Schachbrett angezeigt, bei dem es dem weißen Bauer
+(\texttt{e5}) möglich ist im Vorübergehen den schwarzen Bauer
+(\texttt{d5}) zu schlagen.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{squares} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{SquareSet}\PY{p}{(}\PY{p}{[}\PY{n}{chess}\PY{o}{.}\PY{n}{D6}\PY{p}{]}\PY{p}{)}
+        \PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{,} \PY{n}{squares}\PY{o}{=}\PY{n}{squares}\PY{p}{)} 
+\end{Verbatim}
+
+
+    Neben dem en passant gibt es einen weiteren bekannten Sonderzug, die
+sogenannte Rochade. Bei der Rochade lassen sich die Positionen eines
+Turms und des Königs tauschen, wobei für diesen Vorgang nur ein Zug
+benötigt wird. Dabei ist zu beachten, dass die Voraussetzung für diesen
+Zug ist, dass sowohl der zu verwendende Turm, als auch der König im
+Verlauf des Spiels nicht genutzt wurden. Ebenfalls dürfen die Felder
+zwischen König und Turm nicht belegt sein und keines der Felder, durch
+die der König ziehen muss, darf durch eine gegnerische Figur bedroht
+sein, sowie der König vor und nach der Rochade nicht im Schach stehen.
+
+Für jeden Spieler gibt es zwei verschiedene Möglichkeiten der Rochade,
+einerseits die kurze, als auch die lange Rochade. Ein Beispiel für eine
+lange Rochade der weißen Figuren ist, dass der Turm (\texttt{a1}) und
+der König (\texttt{e1}) ihre Positionen tauschen und somit der Turm sich
+auf dem Feld \texttt{d1} und der König auf \texttt{c1} befindet.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} import situation where castling is possible}
+        \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{8/8/8/8/8/8/8/R3K3 w KQkq \PYZhy{} 0 1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} shortcut for the castling\PYZhy{}move with the queenside rook}
+        \PY{n}{castling} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{O\PYZhy{}O\PYZhy{}O}\PY{l+s+s2}{\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} check if castling is in the legal moves and print the result}
+        \PY{k}{if} \PY{n}{castling} \PY{o+ow}{in} \PY{n+nb}{str}\PY{p}{(}\PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Library is supporting castling: True}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{board}\PY{o}{.}\PY{n}{push\PYZus{}san}\PY{p}{(}\PY{n}{castling}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Library is supporting castling: False}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{)}\PY{p}{)} 
+\end{Verbatim}
+
+
+    Eine durchgeführte kurze weiße Rochade, bei der \texttt{a1} und
+\texttt{e1} die Positionen getauscht haben, sodass der König sich nun
+auf \texttt{c1} und der Turm auf \texttt{d1} befindet. Die Abkürzung für
+eine kurze Rochade ist \emph{O-O}, das für den Turm auf der Seite des
+Königs steht und \emph{O-O-O} für eine lange Rochade, wobei die
+Abkürzung für den Turm auf der Seite der Dame steht.
+
+    \subsection{Einbinden eines Opening-Books in die Chess
+AI}\label{einbinden-eines-opening-books-in-die-chess-ai}
+
+Polyglot ist ein Open-Source Format, in dem sogenannte Opening-Books
+erstellt werden können. Opening-Books sind Ansammlungen von Spielzügen,
+die im Schach zur Eröffnung genutzt werden können. Hierbei wird zum
+Einstieg des Spiels nicht auf eine Künstliche Intelligenz
+zurückgegriffen, sondern auf ein Verzeichnis von bereits bestehenden
+Zügen, die sich innerhalb dieses Opening-Books befinden. Der Vorteil
+eines Opening-Books liegt darin, dass bereits qualitativ hochwertige
+Strategien verfügbar sind und somit ein anspruchsvolles Spiel
+ermöglichen.
+
+Sobald das Opening-Book, im Verlauf des Spiels, keinen passenden Zug als
+Antwort bereitstellen kann, übernimmt die Künstliche Intelligenz.
+
+Für das Einbinden eines Opening-Books werden einige Funktionen aus der
+Core Chess Library genutzt und müssen somit eingebunden werden.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{chess}\PY{n+nn}{.}\PY{n+nn}{polyglot}
+\end{Verbatim}
+
+
+    Als nächstes wird ein neues Spiel/Board erzeugt, indem die Figuren
+standardmäßig angeordnet werden. Ebenfalls wird ein Opening-Book in eine
+Variable geladen, damit aus dieser der bestmöglichen Zug ausgewählt
+werden kann. Dies geschieht, indem das Opening-Book das aktuelle Board
+übergeben bekommt und anhand der Positionen der Figuren einen passenden
+Zug auswählt.
+
+Der ausgewählte Zug wird als nächstes auf dem Schachbrett ausgeführt und
+somit wird in diesem Beispiel der weiße Bauer von \texttt{e2} nach
+\texttt{e4} gezogen.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
+        \PY{n}{book} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{polyglot}\PY{o}{.}\PY{n}{open\PYZus{}reader}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{res/polyglot/Performance.bin}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{k}{def} \PY{n+nf}{get\PYZus{}move}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
+            \PY{c+c1}{\PYZsh{} find the move with the highest weight for the current board}
+            \PY{k}{try}\PY{p}{:}
+                \PY{n}{main\PYZus{}entry} \PY{o}{=} \PY{n}{book}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{n}{board}\PY{p}{)}
+                \PY{n}{all\PYZus{}entries} \PY{o}{=} \PY{n}{book}\PY{o}{.}\PY{n}{find\PYZus{}all}\PY{p}{(}\PY{n}{board}\PY{p}{)}
+        
+                \PY{n}{move} \PY{o}{=} \PY{n}{main\PYZus{}entry}\PY{o}{.}\PY{n}{move}\PY{p}{(}\PY{p}{)}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Selected move with the highest weight: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{move}\PY{p}{)}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{All available moves for this situation: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{p}{[}\PY{n+nb}{str}\PY{p}{(}\PY{n}{entry}\PY{o}{.}\PY{n}{move}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{entry} \PY{o+ow}{in} \PY{n}{all\PYZus{}entries}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        
+                \PY{k}{return} \PY{n}{move}
+            \PY{k}{except} \PY{n+ne}{IndexError}\PY{p}{:}
+                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The opening book cannot find an appropriate move!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
+            \PY{n}{next\PYZus{}move} \PY{o}{=} \PY{n}{get\PYZus{}move}\PY{p}{(}\PY{n}{board}\PY{p}{)}
+            \PY{n}{board}\PY{o}{.}\PY{n}{push}\PY{p}{(}\PY{n}{next\PYZus{}move}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Selected move: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{next\PYZus{}move}\PY{p}{)}\PY{p}{)}
+        \PY{n}{book}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{p}{)}
+        
+        \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
