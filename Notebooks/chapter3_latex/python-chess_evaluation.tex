@@ -272,16 +272,16 @@
     
     
 
-\begin{document}
+    \begin{document}
     
     
-\maketitle
+    \maketitle
     
     
 
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{core}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{HTML}\PY{p}{,} \PY{n}{display}
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{core}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{HTML}\PY{p}{,} \PY{n}{display}
         \PY{n}{HTML}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}
         \PY{l+s+s2}{\PYZlt{}style\PYZgt{}}
         \PY{l+s+s2}{svg }\PY{l+s+s2}{\PYZob{}}
@@ -297,17 +297,13 @@
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}1}]:} <IPython.core.display.HTML object>
-\end{Verbatim}
-            
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} \PYZpc{}autosave 0}
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} \PYZpc{}autosave 0}
         \PY{o}{\PYZpc{}}\PY{k}{config} IPCompleter.greedy=True
 \end{Verbatim}
 
 
-\section{Python-Chess Evaluierung}\label{python-chess-evaluierung}
+    \section{Python-Chess Evaluierung}\label{python-chess-evaluierung}
 
 In diesem Notebook wird die "python-chess-library", oder auch "chess
 core" genannt, Bibliothek evaluiert. Der "chess core" soll Funktionen
@@ -408,7 +404,7 @@ Zu Beginn muss die Python-Chess-Library eingebunden werden, die für den
 weiteren Verlauf der Evaluierung und Implementierung benötigt wird.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{import} \PY{n+nn}{chess}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{chess}
 \end{Verbatim}
 
 
@@ -424,7 +420,7 @@ befindliche Figur auszulesen. Dieses Feld wird dabei über das Datenfeld
 \texttt{chess.B1} aufgerufen.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
             
         \PY{n+nb}{print} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{Board:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
         \PY{n+nb}{print} \PY{p}{(}\PY{n}{board}\PY{p}{)}
@@ -535,7 +531,7 @@ werden. Ebenfalls wird das Modul \texttt{random} eingebunden, da es für
 die Berechnung zufälliger Züge benötigt wird.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{k+kn}{import} \PY{n+nn}{chess}\PY{n+nn}{.}\PY{n+nn}{svg}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{import} \PY{n+nn}{chess}\PY{n+nn}{.}\PY{n+nn}{svg}
         \PY{k+kn}{import} \PY{n+nn}{random}
         \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
@@ -547,7 +543,7 @@ die Funktion \texttt{get\_legal\_moves\_uci} genutzt um die erlaubten
 Züge berechnen zu lassen.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}random\PYZus{}move}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}random\PYZus{}move}\PY{p}{(}\PY{p}{)}\PY{p}{:}
             \PY{k}{return} \PY{n}{random}\PY{o}{.}\PY{n}{choice}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}\PY{p}{)}
         
         \PY{k}{def} \PY{n+nf}{get\PYZus{}legal\PYZus{}moves\PYZus{}uci}\PY{p}{(}\PY{p}{)}\PY{p}{:}
@@ -560,7 +556,7 @@ möglichen, bzw. erlaubten, Züge auszugeben. Dabei wird die zuvor
 eingeführte Funktion zur Berechnung von legalen Zügen verwendet.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}user\PYZus{}move}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}user\PYZus{}move}\PY{p}{(}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Possible Moves: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{get\PYZus{}legal\PYZus{}moves\PYZus{}uci}\PY{p}{(}\PY{p}{)}\PY{p}{)}
             
@@ -581,7 +577,7 @@ Ebenfalls wird als Unterstützung für den Spieler pro Zug das Schachbrett
 und die legalen Züge ausgegeben.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}
         \PY{k}{while} \PY{p}{(}\PY{o+ow}{not} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}game\PYZus{}over}\PY{p}{(}\PY{p}{)} \PY{o+ow}{and} \PY{n}{counter} \PY{o}{\PYZlt{}} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
             \PY{n+nb}{print}\PY{p}{(}\PY{n}{board}\PY{p}{)}
@@ -617,7 +613,7 @@ R N B Q K B N R
 Possible Moves: 
 ['g1h3', 'g1f3', 'b1c3', 'b1a3', 'h2h3', 'g2g3', 'f2f3', 'e2e3', 'd2d3', 'c2c3', 'b2b3', 'a2a3', 'h2h4', 'g2g4', 'f2f4', 'e2e4', 'd2d4', 'c2c4', 'b2b4', 'a2a4']
 Enter your move:
-c2c3
+g1h3
 Your Move: 
 ---------------
 r n b q k b n r
@@ -625,48 +621,48 @@ p p p p p p p p
 . . . . . . . .
 . . . . . . . .
 . . . . . . . .
-. . P . . . . .
-P P . P P P P P
-R N B Q K B N R
+. . . . . . . N
+P P P P P P P P
+R N B Q K B . R
 ---------------
 
 AIs Move:
 ---------------
-r . b q k b n r
+r n b q k b . r
 p p p p p p p p
-. . n . . . . .
+. . . . . n . .
 . . . . . . . .
 . . . . . . . .
-. . P . . . . .
-P P . P P P P P
-R N B Q K B N R
+. . . . . . . N
+P P P P P P P P
+R N B Q K B . R
 ---------------
 
 Possible Moves: 
-['g1h3', 'g1f3', 'd1a4', 'd1b3', 'd1c2', 'b1a3', 'c3c4', 'h2h3', 'g2g3', 'f2f3', 'e2e3', 'd2d3', 'b2b3', 'a2a3', 'h2h4', 'g2g4', 'f2f4', 'e2e4', 'd2d4', 'b2b4', 'a2a4']
+['h3g5', 'h3f4', 'h3g1', 'h1g1', 'b1c3', 'b1a3', 'g2g3', 'f2f3', 'e2e3', 'd2d3', 'c2c3', 'b2b3', 'a2a3', 'g2g4', 'f2f4', 'e2e4', 'd2d4', 'c2c4', 'b2b4', 'a2a4']
 Enter your move:
-d1a4
+h3g5
 Your Move: 
 ---------------
-r . b q k b n r
+r n b q k b . r
 p p p p p p p p
-. . n . . . . .
+. . . . . n . .
+. . . . . . N .
 . . . . . . . .
-Q . . . . . . .
-. . P . . . . .
-P P . P P P P P
-R N B . K B N R
+. . . . . . . .
+P P P P P P P P
+R N B Q K B . R
 ---------------
 
 AIs Move:
-r . b q k b n r
-. p p p p p p p
-p . n . . . . .
+r . b q k b . r
+p p p p p p p p
+n . . . . n . .
+. . . . . . N .
 . . . . . . . .
-Q . . . . . . .
-. . P . . . . .
-P P . P P P P P
-R N B . K B N R
+. . . . . . . .
+P P P P P P P P
+R N B Q K B . R
 [{\ldots}]
 
     \end{Verbatim}
@@ -687,13 +683,13 @@ Um dies zu ermöglichen, muss zunächst die SVG library aus
 ausgegeben werden.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{SVG}
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{SVG}
         
         \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
         \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{)}\PY{p}{)} 
 \end{Verbatim}
 
-\texttt{\color{outcolor}Out[{\color{outcolor}9}]:}
+\texttt{\color{outcolor}Out[{\color{outcolor}7}]:}
     
     \begin{center}
     \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_18_0.pdf}
@@ -714,11 +710,11 @@ diesem Codeausschnitt manuell, durch den Übergabeparamter
 \texttt{chess.E8}, hervorgehoben.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{1R2k3/R7/8/8/8/8/8/4K3 b KQkq \PYZhy{} 0 1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{p}{,} \PY{n}{check}\PY{o}{=}\PY{n}{chess}\PY{o}{.}\PY{n}{E8}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{1R2k3/R7/8/8/8/8/8/4K3 b KQkq \PYZhy{} 0 1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{p}{,} \PY{n}{check}\PY{o}{=}\PY{n}{chess}\PY{o}{.}\PY{n}{E8}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
-\texttt{\color{outcolor}Out[{\color{outcolor}10}]:}
+\texttt{\color{outcolor}Out[{\color{outcolor}8}]:}
     
     \begin{center}
     \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_20_0.pdf}
@@ -742,12 +738,12 @@ Ausgangspositionen, die mit \texttt{move.from\_square} ausgelesen werden
 können, mit dem eingegebenen Feld übereinstimmen.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
-         
-         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Please enter field:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{field} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{p}{)}
-         
-         \PY{n}{moves\PYZus{}from\PYZus{}spec\PYZus{}field} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{move}\PY{p}{:} \PY{n}{move}\PY{o}{.}\PY{n}{from\PYZus{}square} \PY{o+ow}{is} \PY{n}{chess}\PY{o}{.}\PY{n}{SQUARE\PYZus{}NAMES}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{field}\PY{p}{)}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Please enter field:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{field} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{p}{)}
+        
+        \PY{n}{moves\PYZus{}from\PYZus{}spec\PYZus{}field} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{filter}\PY{p}{(}\PY{k}{lambda} \PY{n}{move}\PY{p}{:} \PY{n}{move}\PY{o}{.}\PY{n}{from\PYZus{}square} \PY{o+ow}{is} \PY{n}{chess}\PY{o}{.}\PY{n}{SQUARE\PYZus{}NAMES}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{field}\PY{p}{)}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -761,7 +757,7 @@ a2
 Diese können mit der Funktion \texttt{move.to\_square} ausgelsen werden.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{square\PYZus{}nums} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{move}\PY{p}{:} \PY{n}{move}\PY{o}{.}\PY{n}{to\PYZus{}square}\PY{p}{,} \PY{n}{moves\PYZus{}from\PYZus{}spec\PYZus{}field}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{square\PYZus{}nums} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{move}\PY{p}{:} \PY{n}{move}\PY{o}{.}\PY{n}{to\PYZus{}square}\PY{p}{,} \PY{n}{moves\PYZus{}from\PYZus{}spec\PYZus{}field}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -772,13 +768,13 @@ berechneten Feldern, die von dem angegebenen Feld aus erreicht werden
 können.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{squares} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{SquareSet}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{squares} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{SquareSet}\PY{p}{(}\PY{p}{)}
          \PY{k}{for} \PY{n}{square\PYZus{}num} \PY{o+ow}{in} \PY{n}{square\PYZus{}nums} \PY{p}{:} \PY{n}{squares}\PY{o}{.}\PY{n}{add}\PY{p}{(}\PY{n}{square\PYZus{}num}\PY{p}{)}
          
          \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{,} \PY{n}{squares}\PY{o}{=}\PY{n}{squares}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
-\texttt{\color{outcolor}Out[{\color{outcolor}13}]:}
+\texttt{\color{outcolor}Out[{\color{outcolor}11}]:}
     
     \begin{center}
     \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_26_0.pdf}
@@ -802,7 +798,7 @@ Ebenso wird angegeben unter welchem Pfad sich die Zughistorie befinden
 soll.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}14}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+{\color{incolor}In [{\color{incolor}12}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
          \PY{n}{HISTORY\PYZus{}FILE\PYZus{}LOC} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{res/history.csv}\PY{l+s+s2}{\PYZdq{}}
 \end{Verbatim}
 
@@ -811,7 +807,7 @@ soll.
 zufällig aus der Liste der legalen Züge gewählt wird.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}15}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}random\PYZus{}move}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}random\PYZus{}move}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
              \PY{k}{return} \PY{n}{random}\PY{o}{.}\PY{n}{choice}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
@@ -828,7 +824,7 @@ daraus entstehenden Liste gespeichert, da die einzelnen Merkmale in
 dieser Darstellung per Leerzeichen getrennt werden.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}16}]:} \PY{k}{def} \PY{n+nf}{play\PYZus{}random\PYZus{}chess\PYZus{}game}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k}{def} \PY{n+nf}{play\PYZus{}random\PYZus{}chess\PYZus{}game}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
              \PY{n}{turn\PYZus{}list} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{p}{)}
              \PY{k}{while} \PY{o+ow}{not} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}game\PYZus{}over}\PY{p}{(}\PY{p}{)}\PY{p}{:}
                  \PY{n}{turn\PYZus{}list}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{board}\PY{o}{.}\PY{n}{fen}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
@@ -849,7 +845,7 @@ existiert, wird der Siegwert zu dem aktuellen Wert aus der Historie dazu
 addiert, andernfalls wird ein neuer Eintrag mit dem Siegwert angelegt.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}17}]:} \PY{k}{def} \PY{n+nf}{store\PYZus{}game}\PY{p}{(}\PY{n}{turn\PYZus{}list}\PY{p}{,} \PY{n}{victory\PYZus{}status}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}15}]:} \PY{k}{def} \PY{n+nf}{store\PYZus{}game}\PY{p}{(}\PY{n}{turn\PYZus{}list}\PY{p}{,} \PY{n}{victory\PYZus{}status}\PY{p}{)}\PY{p}{:}
                  \PY{n}{new\PYZus{}turn\PYZus{}dict} \PY{o}{=} \PY{n+nb}{dict}\PY{o}{.}\PY{n}{fromkeys}\PY{p}{(}\PY{n}{turn\PYZus{}list}\PY{p}{,} \PY{n}{victory\PYZus{}status}\PY{p}{)}
                  \PY{c+c1}{\PYZsh{} get existing board history}
                  \PY{n}{history} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{HISTORY\PYZus{}FILE\PYZus{}LOC}\PY{p}{)}
@@ -876,25 +872,39 @@ Der folgende Code koordiniert die Abläufe der Funktionen um die Datei
 \texttt{history.csv} zu erweitern.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{:}
-            \PY{n}{i} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
-            \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
-            \PY{n}{turn\PYZus{}list} \PY{o}{=} \PY{n}{play\PYZus{}random\PYZus{}chess\PYZus{}game}\PY{p}{(}\PY{n}{board}\PY{p}{)}
-        
-            \PY{n}{victory\PYZus{}status} \PY{o}{=} \PY{l+m+mi}{1} \PY{k}{if} \PY{n}{board}\PY{o}{.}\PY{n}{turn} \PY{k}{else} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}
-            \PY{n}{store\PYZus{}game}\PY{p}{(}\PY{n}{turn\PYZus{}list}\PY{p}{,} \PY{n}{victory\PYZus{}status}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Games finished}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}16}]:} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{:}
+             \PY{n}{i} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+             \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
+             \PY{n}{turn\PYZus{}list} \PY{o}{=} \PY{n}{play\PYZus{}random\PYZus{}chess\PYZus{}game}\PY{p}{(}\PY{n}{board}\PY{p}{)}
+         
+             \PY{n}{victory\PYZus{}status} \PY{o}{=} \PY{l+m+mi}{1} \PY{k}{if} \PY{n}{board}\PY{o}{.}\PY{n}{turn} \PY{k}{else} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}
+             \PY{n}{store\PYZus{}game}\PY{p}{(}\PY{n}{turn\PYZus{}list}\PY{p}{,} \PY{n}{victory\PYZus{}status}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Games finished}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Games finished
+
+    \end{Verbatim}
 
     Ein Ausschnitt aus der history.csv ist im folgenden Snippet zu sehen.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{HISTORY\PYZus{}FILE\PYZus{}LOC}\PY{p}{)}
-        \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{HISTORY\PYZus{}FILE\PYZus{}LOC}\PY{p}{)}
+         \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:}    Unnamed: 0                                              board  value
+         0           0                              k1B5/7K/8/8/8/8/1R6/8     -1
+         1           1             2b3nk/rp6/2BP4/p2p1P2/3KpQp1/8/r6N/1N6     -1
+         2           2                     8/2k5/P7/1PP5/5R1P/8/3B1K2/6R1      1
+         3           3  rn1k1bn1/1pp1ppr1/3P4/p2p2pp/P5bP/2PP2P1/RPN2P{\ldots}      1
+         4           4                         8/6k1/8/1p6/1b4K1/P5p1/8/8     -1
+\end{Verbatim}
+            
     Damit eingeschätzt werden kann, wie aussichtsreich ein bestimmter
 Boardzustand ist, kann ein gespeicherter Spielverlauf zur Hilfe genommen
 werden. Mit Hilfe der Funktion \texttt{compare\_board\_history} kann ein
@@ -912,11 +922,11 @@ Spielsituation nicht vorhanden ist, wird der Wert \texttt{0}
 zurückgegeben.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{def} \PY{n+nf}{compare\PYZus{}board\PYZus{}history}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
-                \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{HISTORY\PYZus{}FILE\PYZus{}LOC}\PY{p}{)}
-                \PY{n}{row} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{board}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{board}\PY{o}{.}\PY{n}{fen}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}
-                \PY{n}{value} \PY{o}{=} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{value}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{item}\PY{p}{(}\PY{p}{)} \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{value}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{1} \PY{k}{else} \PY{l+m+mi}{0}
-                \PY{k}{return} \PY{n}{value}
+{\color{incolor}In [{\color{incolor}18}]:} \PY{k}{def} \PY{n+nf}{compare\PYZus{}board\PYZus{}history}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{HISTORY\PYZus{}FILE\PYZus{}LOC}\PY{p}{)}
+                 \PY{n}{row} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{board}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{board}\PY{o}{.}\PY{n}{fen}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}
+                 \PY{n}{value} \PY{o}{=} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{value}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{item}\PY{p}{(}\PY{p}{)} \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{value}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{1} \PY{k}{else} \PY{l+m+mi}{0}
+                 \PY{k}{return} \PY{n}{value}
 \end{Verbatim}
 
 
@@ -967,23 +977,37 @@ Teilfunktion der zuvor genannten genutzt werden. Diese Funktion
 gespielten Zügen ein Schachmatt vorliegt
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} import situation where checkmate is True}
-        \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r1bqkb1r/pppp1Qpp/2n2n2/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq \PYZhy{} 0 4}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Check: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}check}\PY{p}{(}\PY{p}{)}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Checkmate: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}checkmate}\PY{p}{(}\PY{p}{)}\PY{p}{)}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Game is over: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}game\PYZus{}over}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} import situation where checkmate is True}
+         \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{r1bqkb1r/pppp1Qpp/2n2n2/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq \PYZhy{} 0 4}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Check: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}check}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Checkmate: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}checkmate}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Game is over: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{board}\PY{o}{.}\PY{n}{is\PYZus{}game\PYZus{}over}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Check:  True
+Checkmate:  True
+Game is over:  True
+
+    \end{Verbatim}
 
     Im folgenden wird ein Beispiel einer Spielsituation gezeigt, in der ein
 Schachmatt vorliegt und die auf Schach, Schachmatt und Spielende
 überprüft wurde.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
+\texttt{\color{outcolor}Out[{\color{outcolor}20}]:}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_44_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
 
     \subsection{Überprüfung, ob "en passant" und "Rochaden" unterstützt
 werden}\label{uxfcberpruxfcfung-ob-en-passant-und-rochaden-unterstuxfctzt-werden}
@@ -1009,13 +1033,18 @@ Library die beiden Sonderzüge unterstützt, oder ob diese Unterstützung
 manuell entwickelt werden muss.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} import situation where en passant is possible}
-        \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rnbqkbnr/1pp1pppp/p7/3pP3/8/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 3}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{} the function board.has\PYZus{}legal\PYZus{}en\PYZus{}passant() could check if a en passant is possible, but does not return at which square}
-        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Library is supporting en passant: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{chess}\PY{o}{.}\PY{n}{Move}\PY{o}{.}\PY{n}{from\PYZus{}uci}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{e5d6}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{o+ow}{in} \PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}21}]:} \PY{c+c1}{\PYZsh{} import situation where en passant is possible}
+         \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rnbqkbnr/1pp1pppp/p7/3pP3/8/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 3}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} the function board.has\PYZus{}legal\PYZus{}en\PYZus{}passant() could check if a en passant is possible, but does not return at which square}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Library is supporting en passant: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{chess}\PY{o}{.}\PY{n}{Move}\PY{o}{.}\PY{n}{from\PYZus{}uci}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{e5d6}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{o+ow}{in} \PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Library is supporting en passant:  True
+
+    \end{Verbatim}
 
     Die Chess-Core Bibliothek unterstützt somit den Sonderzug en passent.
 
@@ -1024,10 +1053,17 @@ Im Folgenden wird ein Schachbrett angezeigt, bei dem es dem weißen Bauer
 (\texttt{d5}) zu schlagen.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{squares} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{SquareSet}\PY{p}{(}\PY{p}{[}\PY{n}{chess}\PY{o}{.}\PY{n}{D6}\PY{p}{]}\PY{p}{)}
-        \PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{,} \PY{n}{squares}\PY{o}{=}\PY{n}{squares}\PY{p}{)} 
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{squares} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{SquareSet}\PY{p}{(}\PY{p}{[}\PY{n}{chess}\PY{o}{.}\PY{n}{D6}\PY{p}{]}\PY{p}{)}
+         \PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{,} \PY{n}{squares}\PY{o}{=}\PY{n}{squares}\PY{p}{)} 
 \end{Verbatim}
 
+\texttt{\color{outcolor}Out[{\color{outcolor}22}]:}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_48_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
 
     Neben dem en passant gibt es einen weiteren bekannten Sonderzug, die
 sogenannte Rochade. Bei der Rochade lassen sich die Positionen eines
@@ -1046,21 +1082,33 @@ der König (\texttt{e1}) ihre Positionen tauschen und somit der Turm sich
 auf dem Feld \texttt{d1} und der König auf \texttt{c1} befindet.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} import situation where castling is possible}
-        \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{8/8/8/8/8/8/8/R3K3 w KQkq \PYZhy{} 0 1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{} shortcut for the castling\PYZhy{}move with the queenside rook}
-        \PY{n}{castling} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{O\PYZhy{}O\PYZhy{}O}\PY{l+s+s2}{\PYZdq{}}
-        
-        \PY{c+c1}{\PYZsh{} check if castling is in the legal moves and print the result}
-        \PY{k}{if} \PY{n}{castling} \PY{o+ow}{in} \PY{n+nb}{str}\PY{p}{(}\PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Library is supporting castling: True}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-            \PY{n}{board}\PY{o}{.}\PY{n}{push\PYZus{}san}\PY{p}{(}\PY{n}{castling}\PY{p}{)}
-        \PY{k}{else}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Library is supporting castling: False}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{)}\PY{p}{)} 
+{\color{incolor}In [{\color{incolor}23}]:} \PY{c+c1}{\PYZsh{} import situation where castling is possible}
+         \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{8/8/8/8/8/8/8/R3K3 w KQkq \PYZhy{} 0 1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} shortcut for the castling\PYZhy{}move with the queenside rook}
+         \PY{n}{castling} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{O\PYZhy{}O\PYZhy{}O}\PY{l+s+s2}{\PYZdq{}}
+         
+         \PY{c+c1}{\PYZsh{} check if castling is in the legal moves and print the result}
+         \PY{k}{if} \PY{n}{castling} \PY{o+ow}{in} \PY{n+nb}{str}\PY{p}{(}\PY{n}{board}\PY{o}{.}\PY{n}{legal\PYZus{}moves}\PY{p}{)}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Library is supporting castling: True}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{board}\PY{o}{.}\PY{n}{push\PYZus{}san}\PY{p}{(}\PY{n}{castling}\PY{p}{)}
+         \PY{k}{else}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Library is supporting castling: False}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{)}\PY{p}{)} 
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Library is supporting castling: True
+
+    \end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}23}]:}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_50_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
 
     Eine durchgeführte kurze weiße Rochade, bei der \texttt{a1} und
 \texttt{e1} die Positionen getauscht haben, sodass der König sich nun
@@ -1089,7 +1137,7 @@ Für das Einbinden eines Opening-Books werden einige Funktionen aus der
 Core Chess Library genutzt und müssen somit eingebunden werden.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{chess}\PY{n+nn}{.}\PY{n+nn}{polyglot}
+{\color{incolor}In [{\color{incolor}24}]:} \PY{k+kn}{import} \PY{n+nn}{chess}\PY{n+nn}{.}\PY{n+nn}{polyglot}
 \end{Verbatim}
 
 
@@ -1105,30 +1153,269 @@ somit wird in diesem Beispiel der weiße Bauer von \texttt{e2} nach
 \texttt{e4} gezogen.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
-        \PY{n}{book} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{polyglot}\PY{o}{.}\PY{n}{open\PYZus{}reader}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{res/polyglot/Performance.bin}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{k}{def} \PY{n+nf}{get\PYZus{}move}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
-            \PY{c+c1}{\PYZsh{} find the move with the highest weight for the current board}
-            \PY{k}{try}\PY{p}{:}
-                \PY{n}{main\PYZus{}entry} \PY{o}{=} \PY{n}{book}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{n}{board}\PY{p}{)}
-                \PY{n}{all\PYZus{}entries} \PY{o}{=} \PY{n}{book}\PY{o}{.}\PY{n}{find\PYZus{}all}\PY{p}{(}\PY{n}{board}\PY{p}{)}
-        
-                \PY{n}{move} \PY{o}{=} \PY{n}{main\PYZus{}entry}\PY{o}{.}\PY{n}{move}\PY{p}{(}\PY{p}{)}
-                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Selected move with the highest weight: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{move}\PY{p}{)}
-                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{All available moves for this situation: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{p}{[}\PY{n+nb}{str}\PY{p}{(}\PY{n}{entry}\PY{o}{.}\PY{n}{move}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{entry} \PY{o+ow}{in} \PY{n}{all\PYZus{}entries}\PY{p}{]}\PY{p}{)}\PY{p}{)}
-        
-                \PY{k}{return} \PY{n}{move}
-            \PY{k}{except} \PY{n+ne}{IndexError}\PY{p}{:}
-                \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The opening book cannot find an appropriate move!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        
-        \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
-            \PY{n}{next\PYZus{}move} \PY{o}{=} \PY{n}{get\PYZus{}move}\PY{p}{(}\PY{n}{board}\PY{p}{)}
-            \PY{n}{board}\PY{o}{.}\PY{n}{push}\PY{p}{(}\PY{n}{next\PYZus{}move}\PY{p}{)}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Selected move: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{next\PYZus{}move}\PY{p}{)}\PY{p}{)}
-        \PY{n}{book}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{p}{)}
-        
-        \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{p}{)}
+         \PY{n}{book} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{polyglot}\PY{o}{.}\PY{n}{open\PYZus{}reader}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{res/polyglot/Performance.bin}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{k}{def} \PY{n+nf}{get\PYZus{}move}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
+             \PY{c+c1}{\PYZsh{} find the move with the highest weight for the current board}
+             \PY{k}{try}\PY{p}{:}
+                 \PY{n}{main\PYZus{}entry} \PY{o}{=} \PY{n}{book}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{n}{board}\PY{p}{)}
+                 \PY{n}{all\PYZus{}entries} \PY{o}{=} \PY{n}{book}\PY{o}{.}\PY{n}{find\PYZus{}all}\PY{p}{(}\PY{n}{board}\PY{p}{)}
+         
+                 \PY{n}{move} \PY{o}{=} \PY{n}{main\PYZus{}entry}\PY{o}{.}\PY{n}{move}\PY{p}{(}\PY{p}{)}
+                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Selected move with the highest weight: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{move}\PY{p}{)}
+                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{All available moves for this situation: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{p}{[}\PY{n+nb}{str}\PY{p}{(}\PY{n}{entry}\PY{o}{.}\PY{n}{move}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{entry} \PY{o+ow}{in} \PY{n}{all\PYZus{}entries}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         
+                 \PY{k}{return} \PY{n}{move}
+             \PY{k}{except} \PY{n+ne}{IndexError}\PY{p}{:}
+                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The opening book cannot find an appropriate move!}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
+             \PY{n}{next\PYZus{}move} \PY{o}{=} \PY{n}{get\PYZus{}move}\PY{p}{(}\PY{n}{board}\PY{p}{)}
+             \PY{n}{board}\PY{o}{.}\PY{n}{push}\PY{p}{(}\PY{n}{next\PYZus{}move}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Selected move: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{next\PYZus{}move}\PY{p}{)}\PY{p}{)}
+         \PY{n}{book}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{p}{)}
+         
+         \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Selected move with the highest weight:  e2e4
+All available moves for this situation:  e2e4, d2d4, c2c4
+Selected move: e2e4
+
+Selected move with the highest weight:  e7e5
+All available moves for this situation:  e7e5, c7c5
+Selected move: e7e5
+
+
+    \end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}25}]:}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_55_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \subsection{Chess Endgame}\label{chess-endgame}
+
+Nach der Eröffnungsphase mittels Opening-Books und dem Hauptteil des
+Spiels, welches durch Alpha-Beta-Pruning umgesetzt wird, kommt es zum
+Ende zum sogenannten \emph{Endgame}, oder im deutschen Endspiel. Das
+Endgame zeichnet sich durch die Eigenschaft aus, dass es sich nur noch
+um wenige verbliebene Schachfiguren auf dem Brett handelt. Im Verlauf
+des Endgames wird ein Sieger/Verlierer oder ein Unentschieden als
+Ergebnis ermittelt.
+
+Analog zu dem Opening-Book gibt es für das Endgame ebenfalls Datenbanken
+an analysierten Zügen, der letzten \emph{n} Figuren. Hierbei wurden für
+jeden möglichen Zug bereits die Chancen auf einen Sieg, eine Niederlage,
+oder ein Patt berechnet und können auf der Basis eines aktuellen
+Schachbretts abgerufen werden.
+
+Für das Abfragen der Chancen gibt es verschiedene Tabellentypen.
+Speziell erwähnt wird hier die traditionelle Nalimov-Datenbank und das
+neue Format Syzygy. Beide Datenbanken geben dem Nutzer aufgrund der
+aktuellen Spielsituation ein Ergebnis, welches aussagt, welche der
+spielenden Parteien am Gewinnen ist und welche nicht. Das Ziel der sich
+im Vorteil befindenden Partei liegt offensichtlicher Weise darin die
+gegnerische Partei Schachmatt zu setzen, wohingegen die gegnerische
+Partei versucht die Niederlage durch ein Patt, oder individuelle Fehler
+des Gegners zu gewinnen.
+
+Durch die sehr große Anzahl an Möglichkeiten Figuren im Verlauf des
+Endspiels zu ziehen und somit zu einem Ende der Partie zu gelangen sind
+die Datenbanken Nalimov und Syzygy dementsprechend groß. Damit alle
+möglichen Züge berechnet und bewertet werden können braucht es viel
+Zeit. Aktuell sind alle Züge evaluiert wurden, die möglich sind, wenn
+sich auf dem Brett sieben Figuren befinden.
+
+Syzygy bietet dabei ein Vorteil im Gegensatz zu Nalimov, die dazu
+beigetragen haben die zuerst genannte Datenbank zu verwenden. Der
+deutlichste Vorteil von Syzygy ist die geringere Speichergröße bei der
+gleichen Anzahl von Figuren. Syzygy benötigt für die Datenbank von sechs
+Figuren etwa 150 GB, wohingegen die Nalimov-Datenbank 1,2 TB benötigt.
+Ebenfalls unterstützt Syzygy im Gegensatz zur traditionellen Datenbank
+die 50-Züge-Regel.
+
+Für die Umsetzung der Schach-KI wurde sich für die Syzygy-Datenbank mit
+fünf Figuren entschieden, da diese etwa 1GB Speicherplatz benötigt und
+die Datenbank mit der nächst höherer Anzahl an Figuren bereits das
+150-fache davon verbraucht.
+
+Syzygy ist in die zwei Tabellen WDL (win/draw/loss) und DTZ (distance to
+zero) unterteilt. Eine weitere Eigenschaft dieser Datenbank ist, dass
+Syzygy sowohl En-Passant als auch Rochaden als Züge nicht
+berücksichtigt.
+
+Als Antwort auf eine Anfrage an WDL gibt diese Tabelle eine \texttt{2}
+zurück, falls die Partei, die aktuell am Zug ist, am Gewinnen ist.
+Hingegen wird eine \texttt{-2} zurückgegeben, wenn die gegnerische
+Partei am Gewinnen ist und eine \texttt{0}, wenn es auf ein
+Unentschieden hinausläuft. Neben diesen drei verschiedenen Werten kann
+auch eine \texttt{1} oder \texttt{-1} zurückgegeben werden, wenn eine
+der Parteien einen Sieg oder eine Niederlage erreichen kann, der
+ebenfalls zu einem Unentschieden werden kann. Für die Verwendung der
+Distance To Zero Tabelle wird die WDL Tabelle benötigt. Hierbei baut DTZ
+auf den Werten \texttt{-2}, \texttt{-1}, \texttt{0}, \texttt{1} und
+\texttt{2} auf, die um die Information erweitert werden in wie vielen
+Halbzüge es zu einem Schlagzug oder Bauernzug kommen kann.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
+Win/Draw/Loss\strut
+\end{minipage} & \begin{minipage}[b]{0.28\columnwidth}\raggedright\strut
+Distance To Zero\strut
+\end{minipage} & \begin{minipage}[b]{0.28\columnwidth}\raggedright\strut
+Beschreibung\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+-2\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+\(-100\leq n\leq-1\)\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Sichere Niederlage, bei der in -n Zügen es zu einem Schlagzug oder
+Bauernzug kommen kann.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+-1\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+\(n < -100\)\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Niederlage, mit einem möglichen Unentschieden bei Beachtung der
+50-Züge-Regel. Schlagzug oder Bauernzug kann in -n Zügen
+eintreten.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Unentschieden\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+\(100 < n\)\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Sieg, mit einem möglichen Unentschieden bei Beachtung der 50-Züge-Regel.
+Schlagzug oder Bauernzug kann in n Zügen eintreten.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+\(1 \leq n \leq 100\)\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Sicherer Sieg, bei dem in n Zügen es zu einem Schlagzug oder Bauernzug
+kommen kann.\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Im folgenden Codeausschnitt wird zuerst das zur Unterstützung von Syzygy
+benötigte Modul aus der Chess-Bibliothek importiert und daraufhin die
+Datenbank in die Variable \texttt{tablebase} importiert. Ebenfalls wird
+eine fiktive Spielsituation erstellt und der Variable \texttt{board}
+zugewiesen, wobei Schwarz am Zug ist.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{k+kn}{import} \PY{n+nn}{chess}\PY{n+nn}{.}\PY{n+nn}{syzygy}
+         \PY{n}{tablebase} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{syzygy}\PY{o}{.}\PY{n}{open\PYZus{}tablebase}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{res/syzygy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{n}{board} \PY{o}{=} \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{8/2K5/4B3/3N4/8/8/4k3/8 b \PYZhy{} \PYZhy{} 0 1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{SVG}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{svg}\PY{o}{.}\PY{n}{board}\PY{p}{(}\PY{n}{board}\PY{o}{=}\PY{n}{board}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+\texttt{\color{outcolor}Out[{\color{outcolor}26}]:}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_57_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    Darauffolgend werden die möglichen Züge für die aktuelle Spielsituation
+für Schwarz berechnet und der WDL, sowie DTZ Wert dafür berechnet.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{legal\PYZus{}moves} \PY{o}{=} \PY{n}{get\PYZus{}legal\PYZus{}moves\PYZus{}uci}\PY{p}{(}\PY{p}{)}
+         \PY{n}{wdl\PYZus{}start} \PY{o}{=} \PY{n}{tablebase}\PY{o}{.}\PY{n}{probe\PYZus{}wdl}\PY{p}{(}\PY{n}{board}\PY{p}{)}
+         \PY{n}{dtz\PYZus{}start} \PY{o}{=} \PY{n}{tablebase}\PY{o}{.}\PY{n}{probe\PYZus{}dtz}\PY{p}{(}\PY{n}{board}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Possible Moves: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{legal\PYZus{}moves}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{WDL black start:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{wdl\PYZus{}start}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DTZ black start: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{dtz\PYZus{}start}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Possible Moves:  ['e2f3', 'e2d3', 'e2f2', 'e2d2', 'e2f1', 'e2e1', 'e2d1']
+WDL black start: -2
+DTZ black start:  -53
+
+    \end{Verbatim}
+
+    Der folgende Codeblock iteriert durch alle möglichen Züge und berechnet
+dabei den schlechtesten Zug für die gegnerische Partei (weiße Figuren).
+Zur Berechnung dieser Werte muss das Schachbrett immer wieder im
+gleichen Ausgangszustand vorzufinden sein. Damit dies gewährleistet ist
+wird die FEN Darstellung des aktuellen Boards berechnet und diese einem
+Testboard zugewiesen, das pro Iteration/Zug neu definiert wird.
+
+Nachdem das Board definiert ist, wird versucht der DTZ Wert zu
+berechnen. Falls es sich um eine Spielsituation handelt, die von der
+Datenbank nicht abgedeckt wird, wird eine Hinweis ausgegeben.
+
+Zu Beginn der Berechnung des schlechtesten DTZ-Werts für die weiße
+Partei, wird überprüft ob bereits ein Zug ausprobiert wurde. Ist dies
+nicht der Fall, dann wird der erste Zug festgeschrieben und der dazu
+passende DTZ-Wert berechnet. In den nächsten Iterationen wird jeweils
+überprüft ob ein möglicher Zug bessere Werte liefert. Sollte ein
+darauffolgender Zug bessere Werte erzielen, werden die Variablen
+\texttt{next\_move} und \texttt{best\_dtz} durch den besseren Zug
+überschrieben.
+
+Nachdem alle Züge überprüft wurden erhält der Nutzer den für den Gegner
+schlechtesten und somit für sich besten Zug.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{next\PYZus{}move} \PY{o}{=} \PY{k+kc}{None}
+         \PY{n}{best\PYZus{}dtz} \PY{o}{=} \PY{k+kc}{None}
+         \PY{n}{board\PYZus{}fen} \PY{o}{=} \PY{n}{board}\PY{o}{.}\PY{n}{fen}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ b \PYZhy{} \PYZhy{} 0 1}\PY{l+s+s2}{\PYZdq{}}
+         \PY{k}{for} \PY{n}{move} \PY{o+ow}{in} \PY{n}{legal\PYZus{}moves}\PY{p}{:}
+             \PY{n}{testing\PYZus{}board} \PY{o}{=}  \PY{n}{chess}\PY{o}{.}\PY{n}{Board}\PY{p}{(}\PY{n}{board\PYZus{}fen}\PY{p}{)}
+             \PY{n}{testing\PYZus{}board}\PY{o}{.}\PY{n}{push}\PY{p}{(}\PY{n}{chess}\PY{o}{.}\PY{n}{Move}\PY{o}{.}\PY{n}{from\PYZus{}uci}\PY{p}{(}\PY{n}{move}\PY{p}{)}\PY{p}{)}
+             \PY{k}{try}\PY{p}{:}
+                 \PY{k}{if} \PY{p}{(}\PY{n}{next\PYZus{}move} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
+                     \PY{n}{next\PYZus{}move} \PY{o}{=} \PY{n}{move}
+                     \PY{n}{best\PYZus{}dtz} \PY{o}{=} \PY{n}{tablebase}\PY{o}{.}\PY{n}{probe\PYZus{}dtz}\PY{p}{(}\PY{n}{testing\PYZus{}board}\PY{p}{)}
+                     \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{New best move: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{next\PYZus{}move}\PY{p}{)}
+                     \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DTZ white: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{best\PYZus{}dtz}\PY{p}{)}
+                 \PY{k}{elif} \PY{o+ow}{not}\PY{p}{(}\PY{n}{next\PYZus{}move} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{)} \PY{o+ow}{and} \PY{n}{tablebase}\PY{o}{.}\PY{n}{probe\PYZus{}dtz}\PY{p}{(}\PY{n}{testing\PYZus{}board}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{n}{best\PYZus{}dtz}\PY{p}{:}
+                     \PY{n}{next\PYZus{}move} \PY{o}{=} \PY{n}{move}
+                     \PY{n}{best\PYZus{}dtz} \PY{o}{=} \PY{n}{tablebase}\PY{o}{.}\PY{n}{probe\PYZus{}dtz}\PY{p}{(}\PY{n}{testing\PYZus{}board}\PY{p}{)}
+                     \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{New best move: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{next\PYZus{}move}\PY{p}{)}
+                     \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DTZ white: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{best\PYZus{}dtz}\PY{p}{)}
+             \PY{k}{except} \PY{n+ne}{KeyError}\PY{p}{:}
+                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Tablebase only support up to 6 (and experimentally 7) pieces and also only positions without castling rights}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+New best move:  e2f3
+DTZ white:  50
+
+    \end{Verbatim}
+
+    Zum Schluss wird nach der Verwendung von Syzygy die aktuelle Datenbank
+geschlossen.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{n}{tablebase}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
